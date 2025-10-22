@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para mi princesa</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script><!-- confeti -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1>Rompe los 10 globos 🎈</h1>
+      <div class="hud">
+        <span>Dardos: <strong id="dartsLeft">∞</strong></span>
+        <span>Globos rotos: <strong id="poppedCount">0</strong>/10</span>
+      </div>
+    </header>
+
+    <main id="arena" aria-label="zona de juego">
+      <!-- Globos se crean dinámicamente -->
+      <canvas id="aim" aria-hidden="true"></canvas>
+    </main>
+
+    <div class="controls">
+      <button id="startBtn">Comenzar</button>
+      <button id="resetBtn" class="ghost" hidden>Reiniciar</button>
+    </div>
+
+    <dialog id="winModal">
+      <h2>¡Lo lograste! 🎉</h2>
+      <p id="prizeText">Tu premio: lo que más deseas hoy 💝</p>
+      <p class="love">mi princesa hermosa🤭❤️</p>
+      <button id="playAgain">Jugar otra vez</button>
+    </dialog>
+  </div>
+
+  <!-- Sonidos suaves -->
+  <audio id="sndThrow" preload="auto">
+    <source src="https://cdn.jsdelivr.net/gh/naptha/tessdata/empty.ogg" type="audio/ogg" />
+  </audio>
+  <audio id="sndPop" preload="auto">
+    <source src="https://cdn.jsdelivr.net/gh/naptha/tessdata/empty.ogg" type="audio/ogg" />
+  </audio>
+</body>
+</html>

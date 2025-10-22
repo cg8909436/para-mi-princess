@@ -1,0 +1,84 @@
+:root{
+  --bg:#ffeef6;
+  --ink:#3a2a2e;
+  --accent:#ff6ea6;
+  --accent-2:#7ed957;
+  --balloon-1:#ff8ab3;
+  --balloon-2:#ffd166;
+  --balloon-3:#7dd3fc;
+  --balloon-4:#c4b5fd;
+  --shadow: rgba(0,0,0,.12);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Inter,sans-serif;
+  color:var(--ink);
+  background: radial-gradient(1200px 800px at 70% -10%, #fff 0%, var(--bg) 60%);
+}
+.wrap{max-width:980px;margin-inline:auto;padding:16px 20px 28px}
+.top{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+  margin-bottom:10px
+}
+h1{margin:12px 0 4px;font-weight:800;letter-spacing:.2px}
+.hud{display:flex;gap:16px;font-weight:600}
+.hud strong{color:var(--accent)}
+.controls{display:flex;gap:10px;justify-content:center;margin-top:12px}
+button{
+  border:none;border-radius:10px;padding:10px 16px;font-weight:700;
+  background:var(--accent);color:#fff;box-shadow:0 6px 16px var(--shadow);
+  cursor:pointer;transition:.2s transform ease, .2s opacity ease
+}
+button:hover{transform:translateY(-1px)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.ghost{background:#fff;color:var(--ink);border:2px solid var(--accent);}
+
+#arena{
+  position:relative;
+  height:68vh; min-height:420px; border-radius:16px;
+  overflow:hidden; background:linear-gradient(#fefefe, #fff0f6);
+  box-shadow:0 10px 28px var(--shadow);
+}
+
+/* Globos */
+.balloon{
+  position:absolute; width:68px; height:86px; border-radius:48% 48% 48% 48%/55% 55% 45% 45%;
+  box-shadow: inset -8px -10px 20px rgba(0,0,0,.08), 0 10px 24px var(--shadow);
+  cursor:crosshair; display:grid; place-items:center;
+  transform-origin:center bottom;
+}
+.balloon::after{
+  content:""; position:absolute; bottom:-12px; width:10px; height:14px; background:#c88;
+  border-radius:2px; filter:blur(.3px);
+}
+.balloon .shine{
+  position:absolute; top:14px; left:14px; width:16px; height:26px; border-radius:50%;
+  background:rgba(255,255,255,.7); filter:blur(0.2px);
+}
+.balloon.popped{animation:pop .25s ease forwards; pointer-events:none}
+@keyframes pop{
+  to{transform:scale(1.2); opacity:0; filter:blur(1px)}
+}
+
+.color-1{background:var(--balloon-1)}
+.color-2{background:var(--balloon-2)}
+.color-3{background:var(--balloon-3)}
+.color-4{background:var(--balloon-4)}
+
+#aim{
+  position:absolute; inset:0; pointer-events:none;
+}
+
+/* Modal */
+dialog{
+  border:none; border-radius:16px; padding:20px 18px; max-width:420px; width:calc(100% - 32px);
+  box-shadow:0 20px 48px var(--shadow); background:#fff;
+}
+dialog::backdrop{background:rgba(0,0,0,.25)}
+dialog h2{margin-top:0}
+.love{
+  font-size:1.2rem; font-weight:800; color:var(--accent);
+  text-align:center; margin:10px 0 14px;
+}
